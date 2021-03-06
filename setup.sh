@@ -12,6 +12,7 @@ sudo subscription-manager register \
 sudo dnf update
 
 # Stuff needed for installing and enabling use of rbenv. 
+sudo subscription-manager repos --enable=codeready-builder-for-rhel-8-x86_64-rpms
 sudo dnf install -y git curl \
     bison gcc make bzip2 openssl-devel libyaml-devel libffi-devel \
     readline-devel zlib-devel gdbm-devel ncurses-devel
