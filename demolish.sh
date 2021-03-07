@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Redhat subsciprtion foo
+# Give back Redhat subsciprtion foo
 #
 sudo subscription-manager remove --all
 sudo subscription-manager unregister
