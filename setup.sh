@@ -22,8 +22,8 @@ if [[ -d $SETUP_HOME/ssh ]]; then
     sudo su repocat -c "cp -r $SETUP_HOME/ssh ~repocat/.ssh"
     sudo su repocat -c "cp ~repocat/.ssh/id_rsa.pub ~repocat/.ssh/authorized_keys"
     sudo chmod 700 ~repocat/.ssh
-    sudo chmod 644 ~repocat/.ssh/id_rsa.pub
-    sudo chmod 600 ~repocat/.ssh/id_rsa ~repocat/.ssh/authorized_keys
+    sudo chmod 600 ~repocat/.ssh/*
+    sudo chmod 644 ~repocat/.ssh/*.pub
 fi
 
 sudo su repocat -c "curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -"
