@@ -9,10 +9,13 @@ echo $SETUP_HOME
 sudo subscription-manager register \
     --username $RH_USER --password $RH_PASSWORD --auto-attach
 
-sudo dnf update
+# TODO: figure out how to absorb a kernel update without breaking the
+# guest additions
+#sudo dnf update -y
 
 # Stuff needed for installing and enabling use of rbenv. 
-sudo subscription-manager repos --enable=codeready-builder-for-rhel-8-x86_64-rpms
+sudo subscription-manager \
+    repos --enable=codeready-builder-for-rhel-8-x86_64-rpms
 sudo dnf install -y git curl \
     bison gcc make bzip2 openssl-devel libyaml-devel libffi-devel \
     readline-devel zlib-devel gdbm-devel ncurses-devel
@@ -25,6 +28,7 @@ if [[ -d $SETUP_HOME/ssh ]]; then
     sudo chmod 600 ~repocat/.ssh/*
     sudo chmod 644 ~repocat/.ssh/*.pub
 fi
+sudo su repocat -c "mkdir ~repocat/repos"
 
 sudo su repocat -c "curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -"
 sudo su repocat -c "echo 'export PATH=\"\$HOME/.rbenv/bin:\$PATH\"' >> ~/.bashrc"
